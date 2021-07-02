@@ -1,13 +1,18 @@
 package com.rodrigo.barbosa.curso.springboot.entidades;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "tblUsuario")
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -18,6 +23,9 @@ public class Usuario implements Serializable {
 	private String email;
 	private String telefone;
 	private String senha;
+	
+	@OneToMany(mappedBy = "cliente")
+	private List<Pedido> pedidos = new ArrayList<Pedido>();
 	
 	public Usuario() {
 	}
@@ -68,6 +76,10 @@ public class Usuario implements Serializable {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public List<Pedido> getPedidos() {
+		return pedidos;
 	}
 
 	@Override
