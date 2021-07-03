@@ -56,5 +56,13 @@ public class ConfigTeste implements CommandLineRunner {
 		Produto produto4 = new Produto(null, "PC Gamer", "Donec aliquet odio ac rhoncus cursus.", 1200.0, "");
 		Produto produto5 = new Produto(null, "Rails for Dummies", "Cras fringilla convallis sem vel faucibus.", 100.99, "");
 		repositorioProduto.saveAll(Arrays.asList(produto1, produto2, produto3, produto4, produto5));
+		
+		produto1.getCategorias().add(categoria2);
+		produto2.getCategorias().add(categoria1);
+		produto2.getCategorias().add(categoria3);
+		produto3.getCategorias().add(categoria3);
+		produto4.getCategorias().add(categoria3);
+		produto5.getCategorias().add(categoria2);
+		repositorioProduto.saveAll(Arrays.asList(produto1, produto2, produto3, produto4, produto5));
 	}
 }
