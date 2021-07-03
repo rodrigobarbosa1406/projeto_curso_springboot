@@ -20,7 +20,7 @@ public class ServicoPedido {
 	}
 	
 	public Pedido buscarPorId(Long id) {
-		Optional<Pedido> usuario = repositorio.findById(id);
-		return usuario.get();
+		Optional<Pedido> pedido = repositorio.findById(id);
+		return pedido.get();
 	}
 }

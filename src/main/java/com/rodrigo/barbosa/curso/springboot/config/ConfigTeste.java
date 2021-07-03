@@ -8,9 +8,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
+import com.rodrigo.barbosa.curso.springboot.entidades.Categoria;
 import com.rodrigo.barbosa.curso.springboot.entidades.Pedido;
 import com.rodrigo.barbosa.curso.springboot.entidades.Usuario;
 import com.rodrigo.barbosa.curso.springboot.entidades.enums.StatusPedido;
+import com.rodrigo.barbosa.curso.springboot.repositorios.RepositorioCategoria;
 import com.rodrigo.barbosa.curso.springboot.repositorios.RepositorioPedido;
 import com.rodrigo.barbosa.curso.springboot.repositorios.RepositorioUsuario;
 
@@ -23,6 +25,9 @@ public class ConfigTeste implements CommandLineRunner {
 	
 	@Autowired
 	private RepositorioPedido repositorioPedido;
+	
+	@Autowired
+	private RepositorioCategoria repositorioCategoria;
 
 	public void run(String... args) throws Exception {
 
@@ -34,5 +39,10 @@ public class ConfigTeste implements CommandLineRunner {
 		Pedido pedido2 = new Pedido(null, Instant.parse("2019-07-21T03:42:10Z"), StatusPedido.AGUARDANDO_PAGAMENTO, usuario2);
 		Pedido pedido3 = new Pedido(null, Instant.parse("2019-07-22T15:21:22Z"), StatusPedido.AGUARDANDO_PAGAMENTO, usuario1);
 		repositorioPedido.saveAll(Arrays.asList(pedido1, pedido2, pedido3));
+		
+		Categoria categoria1 = new Categoria(null, "Eletrônicos");
+		Categoria categoria2 = new Categoria(null, "Livros");
+		Categoria categoria3 = new Categoria(null, "Computadores");
+		repositorioCategoria.saveAll(Arrays.asList(categoria1, categoria2, categoria3));
 	}
 }

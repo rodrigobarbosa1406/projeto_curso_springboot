@@ -21,13 +21,13 @@ public class RecursoPedido {
 	
 	@GetMapping
 	public ResponseEntity<List<Pedido>> findAll(){
-		List<Pedido> usuarios = servico.buscarTodos();
-		return ResponseEntity.ok().body(usuarios);
+		List<Pedido> pedidos = servico.buscarTodos();
+		return ResponseEntity.ok().body(pedidos);
 	}
 	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Pedido> findById(@PathVariable Long id){
-		Pedido usuario = servico.buscarPorId(id);
-		return ResponseEntity.ok().body(usuario);
+		Pedido pedido = servico.buscarPorId(id);
+		return ResponseEntity.ok().body(pedido);
 	}
 }
