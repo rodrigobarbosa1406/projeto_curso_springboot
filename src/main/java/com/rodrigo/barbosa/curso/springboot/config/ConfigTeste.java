@@ -10,10 +10,12 @@ import org.springframework.context.annotation.Profile;
 
 import com.rodrigo.barbosa.curso.springboot.entidades.Categoria;
 import com.rodrigo.barbosa.curso.springboot.entidades.Pedido;
+import com.rodrigo.barbosa.curso.springboot.entidades.Produto;
 import com.rodrigo.barbosa.curso.springboot.entidades.Usuario;
 import com.rodrigo.barbosa.curso.springboot.entidades.enums.StatusPedido;
 import com.rodrigo.barbosa.curso.springboot.repositorios.RepositorioCategoria;
 import com.rodrigo.barbosa.curso.springboot.repositorios.RepositorioPedido;
+import com.rodrigo.barbosa.curso.springboot.repositorios.RepositorioProduto;
 import com.rodrigo.barbosa.curso.springboot.repositorios.RepositorioUsuario;
 
 @Configuration
@@ -28,6 +30,9 @@ public class ConfigTeste implements CommandLineRunner {
 	
 	@Autowired
 	private RepositorioCategoria repositorioCategoria;
+	
+	@Autowired
+	private RepositorioProduto repositorioProduto;
 
 	public void run(String... args) throws Exception {
 
@@ -44,5 +49,12 @@ public class ConfigTeste implements CommandLineRunner {
 		Categoria categoria2 = new Categoria(null, "Livros");
 		Categoria categoria3 = new Categoria(null, "Computadores");
 		repositorioCategoria.saveAll(Arrays.asList(categoria1, categoria2, categoria3));
+		
+		Produto produto1 = new Produto(null, "The Lord of the Rings", "Lorem ipsum dolor sit amet, consectetur.", 90.5, "");
+		Produto produto2 = new Produto(null, "Smart TV", "Nulla eu imperdiet purus. Maecenas ante.", 2190.0, "");
+		Produto produto3 = new Produto(null, "Macbook Pro", "Nam eleifend maximus tortor, at mollis.", 1250.0, "");
+		Produto produto4 = new Produto(null, "PC Gamer", "Donec aliquet odio ac rhoncus cursus.", 1200.0, "");
+		Produto produto5 = new Produto(null, "Rails for Dummies", "Cras fringilla convallis sem vel faucibus.", 100.99, "");
+		repositorioProduto.saveAll(Arrays.asList(produto1, produto2, produto3, produto4, produto5));
 	}
 }
