@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.rodrigo.barbosa.curso.springboot.entidades.enums.StatusPedido;
 
 @Entity
 @Table(name = "tblPedido")
@@ -25,6 +26,8 @@ public class Pedido implements Serializable {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
 	private Instant dataCriacao;
 	
+	private Integer statusPedido;
+	
 	@ManyToOne
 	@JoinColumn(name = "id_cliente")
 	private Usuario cliente;
@@ -32,9 +35,10 @@ public class Pedido implements Serializable {
 	public Pedido() {
 	}
 
-	public Pedido(Long id, Instant dataCriacao, Usuario cliente) {
+	public Pedido(Long id, Instant dataCriacao, StatusPedido statusPedido, Usuario cliente) {
 		this.id = id;
 		this.dataCriacao = dataCriacao;
+		setStatusPedido(statusPedido);
 		this.cliente = cliente;
 	}
 
@@ -52,6 +56,16 @@ public class Pedido implements Serializable {
 
 	public void setDataCriacao(Instant dataCriacao) {
 		this.dataCriacao = dataCriacao;
+	}
+	
+	public StatusPedido getStatusPedido() {
+		return StatusPedido.valorDe(statusPedido);
+	}
+
+	public void setStatusPedido(StatusPedido statusPedido) {
+		if (statusPedido != null) {
+			this.statusPedido = statusPedido.getCodigo();
+		}
 	}
 
 	public Usuario getCliente() {
