@@ -28,7 +28,7 @@ public class Produto implements Serializable {
 	private String imgUrl;
 
 	@ManyToMany
-	@JoinTable(name = "tblProduto_x_Categoria", joinColumns = @JoinColumn(name = "produto_id"), inverseJoinColumns = @JoinColumn(name = "cateogoria_id"))
+	@JoinTable(name = "tblProduto_x_Categoria", joinColumns = @JoinColumn(name = "produto_id"), inverseJoinColumns = @JoinColumn(name = "categoria_id"))
 	private Set<Categoria> categorias = new HashSet<Categoria>();
 
 	public Produto() {
