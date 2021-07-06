@@ -17,17 +17,17 @@ import com.rodrigo.barbosa.curso.springboot.servicos.ServicoProduto;
 public class RecursoProduto {
 	
 	@Autowired
-	private ServicoProduto servico;
+	private ServicoProduto servicoProduto;
 	
 	@GetMapping
 	public ResponseEntity<List<Produto>> findAll(){
-		List<Produto> produtos = servico.buscarTodos();
+		List<Produto> produtos = servicoProduto.buscarTodos();
 		return ResponseEntity.ok().body(produtos);
 	}
 	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Produto> findById(@PathVariable Long id){
-		Produto produto = servico.buscarPorId(id);
+		Produto produto = servicoProduto.buscarPorId(id);
 		return ResponseEntity.ok().body(produto);
 	}
 }
