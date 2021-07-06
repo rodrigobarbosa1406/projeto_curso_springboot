@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Profile;
 
 import com.rodrigo.barbosa.curso.springboot.entidades.Categoria;
 import com.rodrigo.barbosa.curso.springboot.entidades.ItemPedido;
+import com.rodrigo.barbosa.curso.springboot.entidades.Pagamento;
 import com.rodrigo.barbosa.curso.springboot.entidades.Pedido;
 import com.rodrigo.barbosa.curso.springboot.entidades.Produto;
 import com.rodrigo.barbosa.curso.springboot.entidades.Usuario;
@@ -75,5 +76,9 @@ public class ConfigTeste implements CommandLineRunner {
 		ItemPedido itemPedido3 = new ItemPedido(pedido2, produto3, 2, produto3.getPreco());
 		ItemPedido itemPedido4 = new ItemPedido(pedido3, produto5, 2, produto5.getPreco());
 		repositorioItemPedido.saveAll(Arrays.asList(itemPedido1, itemPedido2, itemPedido3, itemPedido4));
+		
+		Pagamento pagamento1 = new Pagamento(null, Instant.parse("2019-06-20T21:53:07Z"), pedido1);
+		pedido1.setPagamento(pagamento1);
+		repositorioPedido.save(pedido1);
 	}
 }
